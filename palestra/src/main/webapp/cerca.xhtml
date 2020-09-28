@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head></h:head>
+
+<h:body>
+    <p:growl id="messages" showDetail="true"/>
+
+    <h:form >
+        <p:panel>
+
+            <f:facet name="header">
+        <p:commandButton value="Trova Tutti" id="nonAjax" action="#{cercaController.trovaTutto()}"  ajax="false" />
+        <p:commandButton action="#{cercaController.refresh()}"
+                         icon="pi pi-refresh"  ajax="false"/>
+    <p:commandButton value="Menu" action="#{cercaController.ritorno()}"
+                     update="@form" process="@this"  />
+            </f:facet>
+
+        <h:panelGrid columns="2">
+            <p:outputLabel value="Codice Fiscale"/>
+        <p:inputText value="#{cercaController.codiceFiscale}"/>
+            <p:outputLabel value="Nome"/>
+            <p:inputText value="#{cercaController.nome}"/>
+            <p:outputLabel value="Cognome"/>
+            <p:inputText value="#{cercaController.cognome}"/>
+            <h:outputText value="Pagamento" />
+            <p:selectOneButton value="#{cercaController.pagato}">
+                <f:selectItem itemLabel="Pagato" itemValue="pagato" />
+                <f:selectItem itemLabel="Da Pagare" itemValue="Da pagare" />
+            </p:selectOneButton>
+        <p:commandButton value="cerca" action="#{cercaController.cercaPerCodice()}"
+                         ajax="false">
+
+        </p:commandButton>
+
+        </h:panelGrid>
+        </p:panel>
+    </h:form>
+    <h:form id="for">
+        <c:if test="#{cercaController.ok}">
+        <p:dataTable var="li" value="#{cercaController.lista}" tableStyle="width:auto" rows="20"
+                     paginator="true">
+            <p:column headerText="Codice Fiscale">
+                <h:outputText value="#{li.codiceFiscale}" />
+            </p:column>
+
+            <p:column headerText="Nome">
+                <h:outputText value="#{li.nome}" />
+            </p:column>
+
+            <p:column headerText="Cognome">
+                <h:outputText value="#{li.cognome}" />
+            </p:column>
+
+            <p:column headerText="Certificato">
+                <h:outputText value="#{li.getCert()}" />
+            </p:column>
+
+            <p:column headerText="Auto Certificazione">
+                <h:outputText value="#{li.getAuto()}" />
+            </p:column>
+            <p:column headerText="Note">
+                <h:outputText value="#{li.getNot()}" />
+            </p:column>
+
+            <p:column headerText="Mail">
+                <h:outputText value="#{li.mail}" />
+            </p:column>
+
+            <p:column headerText="Telefono">
+                <h:outputText value="#{li.telefono}" />
+            </p:column>
+
+            <p:column headerText="Pagato">
+                <h:outputText value="#{li.pagato}" />
+            </p:column>
+
+            <p:column headerText="Attivo">
+                <h:outputText value="#{li.attivo}" />
+            </p:column>
+
+            <p:column headerText="Abbonamento">
+                <h:outputText value="#{li.abbonamento}" />
+            </p:column>
+
+            <p:column headerText="Data Registrazione">
+                <h:outputText value="#{li.getDataLo()}" />
+            </p:column>
+
+        </p:dataTable>
+        </c:if>
+
+    </h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+    <p:growl id="messages" showDetail="true"/>
+    <h:form id="for">
+
+        <p:panel >
+            <f:facet name="header">
+                Nuovo Iscritto
+                <p:commandButton action="#{allievoController.refresh()}"
+                                 icon="pi pi-refresh" update="@form" process="@this"/>
+                <p:outputLabel />
+                <p:commandButton value="Menu" action="#{allievoController.ritorno()}"
+                                 update="@form" process="@this"  />
+            </f:facet>
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Nome"/>
+                <p:inputText value="#{allievoController.allievo.nome}"
+                             />
+                <p:outputLabel value="Cognome"/>
+                <p:inputText value="#{allievoController.allievo.cognome}"
+                            />
+                <p:outputLabel value="Codice Fiscale"/>
+                <p:inputText value="#{allievoController.allievo.codiceFiscale}"
+                             />
+                <p:outputLabel value="Telefono"/>
+                <p:inputText value="#{allievoController.allievo.telefono}"/>
+                <p:outputLabel value="Mail"/>
+                <p:inputText value="#{allievoController.allievo.mail}"/>
+                <p:outputLabel value="Indirizzo"/>
+                <p:inputText value="#{allievoController.allievo.indirizzo}"/>
+
+                <p:outputLabel value="Corso"/>
+                <p:inputText value="#{allievoController.allievo.corso}"/>
+
+                <p:outputLabel value="Certificato"/>
+                <h:form enctype="multipart/form-data">
+                    <p:fileUpload id="file"  fileUploadListener="#{allievoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                             multiple="true" update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                    <br />
+
+                </h:form>
+
+                <p:outputLabel value="scarica certificazione"/>
+                <p:commandButton value="scarica" action="#{allievoController.scaricaCertificato()}"
+                                 ajax="false"/>
+
+                <p:outputLabel value="elimina certificazione"/>
+                <p:commandButton value="elimina" action="#{allievoController.eliminaCertificato()}"
+                                 ajax="false"/>
+
+                <p:outputLabel value="Autocertificazione"/>
+                <h:form enctype="multipart/form-data">
+                    <p:fileUpload id="file1"  fileUploadListener="#{allievoController.handleFileUpload1}" mode="advanced" dragDropSupport="false"
+                                  multiple="true" update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                    <br />
+                </h:form>
+                <p:outputLabel value="scarica auto certificazione"/>
+                <p:commandButton value="scarica" action="#{allievoController.scaricaAutoCertificato()}"
+                                 ajax="false"/>
+
+                <p:outputLabel value="elimina auto certificazione"/>
+                <p:commandButton value="elimina" action="#{allievoController.eliminaAutoCertificato()}"
+                                 ajax="false"/>
+
+
+                <h:outputText value="Abbonamento" />
+                <p:selectOneButton value="#{allievoController.allievo.abbonamento}">
+                    <f:selectItem itemLabel="Mensile" itemValue="mensile" />
+                    <f:selectItem itemLabel="Annuale" itemValue="annuale" />
+
+                </p:selectOneButton>
+                <h:outputText value="Pagamento" />
+                <p:selectOneButton value="#{allievoController.allievo.pagato}">
+                    <f:selectItem itemLabel="Pagato" itemValue="pagato" />
+                    <f:selectItem itemLabel="Da Pagare" itemValue="Da pagare" />
+                </p:selectOneButton>
+
+                <h:outputText value="Attivo" />
+                <p:selectOneButton value="#{allievoController.allievo.attivo}">
+                    <f:selectItem itemLabel="Attivo" itemValue="attivo" />
+                    <f:selectItem itemLabel="non attivo" itemValue="Non attivo" />
+                </p:selectOneButton>
+                <h:outputText value="Note" />
+                <p:inputTextarea
+                   cols="50"
+                        value="#{allievoController.note}"
+                        autoResize="false" />
+
+            </h:panelGrid>
+            <p:commandButton value="Save" action="#{allievoController.save()}"
+                             update="messages" />
+
+        </p:panel>
+
+        <br/>
+
+
+    </h:form>
+
+</h:body>
+</html>
