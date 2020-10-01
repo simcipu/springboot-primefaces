@@ -31,6 +31,14 @@
                 <p:outputLabel value="Codice Fiscale"/>
                 <p:inputText value="#{allievoController.allievo.codiceFiscale}"
                              />
+                <p:outputLabel value="Comune Nascita"/>
+                <p:inputText value="#{allievoController.allievo.comune}"/>
+                <p:outputLabel value="Data Nascita" />
+                <p:datePicker id="button" value="#{allievoController.allievo.dataNascita}" showIcon="true" />
+                <p:outputLabel value="Comune Residenza"/>
+                <p:inputText value="#{allievoController.allievo.comuneResidenza}"/>
+                <p:outputLabel value="Calcola Codice Fiscale"/>
+                <h:outputLink value="https://www.codicefiscale.com/">Calcola</h:outputLink>
                 <p:outputLabel value="Telefono"/>
                 <p:inputText value="#{allievoController.allievo.telefono}"/>
                 <p:outputLabel value="Mail"/>

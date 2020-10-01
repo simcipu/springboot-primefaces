@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.Month;
+
 
 @Named
 @RequestScoped
@@ -110,6 +110,27 @@ public class AllievoController {
 
         if(allievo.getCodiceFiscale().isEmpty()||allievo.getCodiceFiscale()==null){
             addMessage("Errore", "inserire codiceFiscale");
+            return;
+        }
+        if(allievo.getTelefono().isEmpty()||allievo.getTelefono()==null){
+            addMessage("Errore", "inserire telefono");
+            return;
+        }
+
+        if(allievo.getDataNascita()==null){
+            addMessage("Errore", "inserire data nascita");
+            return;
+        }
+
+
+
+        if(allievo.getComuneResidenza()==null||allievo.getComuneResidenza()==null){
+            addMessage("Errore", "inserire comune residenza");
+            return;
+        }
+
+        if(allievo.getComune().isEmpty()||allievo.getComune()==null){
+            addMessage("Errore", "inserire comune nascita");
             return;
         }
 
@@ -243,6 +264,7 @@ public class AllievoController {
         }
 
     }
+
 
 
 

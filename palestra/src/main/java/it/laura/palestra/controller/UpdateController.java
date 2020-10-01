@@ -181,6 +181,7 @@ public class UpdateController {
         if(!allievoService.cercaCod(ceecaCodiceFiscale)){
             addMessage("Errore", "devi prima salvare");
         }else{
+            allievo=allievoService.cercaPerCodice(ceecaCodiceFiscale);
         allievo.setAutoCertificato(nomeAuto);
         allievo.setNome(nome.toLowerCase());
         allievo.setAbbonamento(abbonamento);
@@ -202,8 +203,7 @@ public class UpdateController {
         if(note!=null){
             allievo.setNote(note.getBytes());
         }
-        LocalDateTime data=LocalDateTime.now();
-        allievo.setData(LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0,0,0));
+
         allievoService.save(allievo);
         allievo=new Allievo();
         uploadedFile=null;

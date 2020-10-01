@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -20,6 +21,9 @@ public class Allievo implements Serializable {
 
     @Column(name = "cognome")
     private String cognome;
+
+    @Column(name = "comune_residenza")
+    private String comuneResidenza;
 
     @Lob
     @Column(name="certificato")
@@ -60,8 +64,14 @@ public class Allievo implements Serializable {
     @Column(name = "corso")
     private String corso;
 
+    @Column(name = "comune_nascita")
+    private String comune;
+
     @Column(name = "data")
     private LocalDateTime data=LocalDateTime.now();
+
+    @Column(name = "data_nascita")
+    private Date dataNascita;
 
     public LocalDateTime getData() {
         return data;
@@ -219,5 +229,29 @@ public class Allievo implements Serializable {
 
     public void setCorso(String corso) {
         this.corso = corso;
+    }
+
+    public String getComune() {
+        return comune;
+    }
+
+    public void setComune(String comune) {
+        this.comune = comune;
+    }
+
+    public String getComuneResidenza() {
+        return comuneResidenza;
+    }
+
+    public void setComuneResidenza(String comuneResidenza) {
+        this.comuneResidenza = comuneResidenza;
+    }
+
+    public Date getDataNascita() {
+        return dataNascita;
+    }
+
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
     }
 }
