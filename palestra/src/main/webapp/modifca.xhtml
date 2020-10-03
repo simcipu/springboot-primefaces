@@ -11,11 +11,10 @@
 <h:body>
     <p:growl id="messages" showDetail="true"/>
     <h:form id="for">
-        <p:outputLabel value="Codice Fiscale"/>
-        <p:inputText value="#{updateController.ceecaCodiceFiscale}"/>
         <p:panel >
             <f:facet name="header">
                 Carica Iscritto per Codice Fiscale
+                <p:inputText value="#{updateController.ceecaCodiceFiscale}"/>
                 <p:commandButton action="#{updateController.carica()}"
                                  icon="pi pi-refresh"  ajax="false" />
                 <div>
@@ -23,8 +22,8 @@
                     <p:commandButton action="#{updateController.refresh()}"
                                      icon="pi pi-refresh" update="@form" process="@this"/>
                     <p:outputLabel />
-                    <p:commandButton value="Menu" action="#{updateController.ritorno()}"
-                                     update="@form" process="@this"  />
+                    <p:commandButton value="Home" action="#{updateController.ritorno()}"
+                                     update="@form" process="@this"  icon="pi pi-home"/>
                 </div>
             </f:facet>
             <h:panelGrid columns="2">
@@ -55,7 +54,7 @@
                 <p:outputLabel value="Certificato"/>
                 <h:form enctype="multipart/form-data">
                     <p:fileUpload id="file"  fileUploadListener="#{updateController.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                  multiple="true" update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                                  update="messages" sizeLimit="1000000" fileLimit="10" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
                     <br />
 
                 </h:form>
@@ -71,10 +70,10 @@
                 <p:outputLabel value="Autocertificazione"/>
                 <h:form enctype="multipart/form-data">
                     <p:fileUpload id="file1"  fileUploadListener="#{updateController.handleFileUpload1}" mode="advanced" dragDropSupport="false"
-                               multiple="true" update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                              update="messages" sizeLimit="1000000" fileLimit="10" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+
                     <br />
-
-
+                </h:form>
                 <p:outputLabel value="scarica auto certificazione"/>
                 <p:commandButton value="scarica" action="#{updateController.scaricaAutoCertificato()}"
                                  ajax="false"/>
@@ -105,7 +104,7 @@
                         value="#{updateController.note}"
                         autoResize="false" />
 
-                </h:form>
+
             </h:panelGrid>
             <p:commandButton value="Modifica" action="#{updateController.save()}"
                              update="messages" />

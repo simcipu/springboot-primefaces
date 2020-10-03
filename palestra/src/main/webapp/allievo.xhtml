@@ -18,22 +18,19 @@
                 <p:commandButton action="#{allievoController.refresh()}"
                                  icon="pi pi-refresh" update="@form" process="@this"/>
                 <p:outputLabel />
-                <p:commandButton value="Menu" action="#{allievoController.ritorno()}"
-                                 update="@form" process="@this"  />
+                <p:commandButton value="Home" action="#{allievoController.ritorno()}"
+                                 update="@form" process="@this" icon="pi pi-home" />
 
             </f:facet>
             <h:panelGrid columns="2">
                 <p:outputLabel value="Calcola Codice Fiscale"/>
                 <h:outputLink value="https://www.codicefiscale.com/" target="_blank">Calcola</h:outputLink>
                 <p:outputLabel value="Nome"/>
-                <p:inputText value="#{allievoController.allievo.nome}"
-                             />
+                <p:inputText value="#{allievoController.allievo.nome}"/>
                 <p:outputLabel value="Cognome"/>
-                <p:inputText value="#{allievoController.allievo.cognome}"
-                            />
+                <p:inputText value="#{allievoController.allievo.cognome}"/>
                 <p:outputLabel value="Codice Fiscale"/>
-                <p:inputText value="#{allievoController.allievo.codiceFiscale}"
-                             />
+                <p:inputText value="#{allievoController.allievo.codiceFiscale}"/>
                 <p:outputLabel value="Comune Nascita"/>
                 <p:inputText value="#{allievoController.allievo.comune}"/>
                 <p:outputLabel value="Data Nascita" />
@@ -53,7 +50,7 @@
                 <p:outputLabel value="Certificato"/>
                 <h:form enctype="multipart/form-data">
                     <p:fileUpload id="file"  fileUploadListener="#{allievoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                              update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                              update="messages" sizeLimit="1000000" fileLimit="10" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
                     <br />
                 </h:form>
 
@@ -68,7 +65,7 @@
                 <p:outputLabel value="Autocertificazione"/>
                 <h:form enctype="multipart/form-data">
                     <p:fileUpload id="file1"  fileUploadListener="#{allievoController.handleFileUpload1}" mode="advanced" dragDropSupport="false"
-                                   update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
+                                   update="messages" sizeLimit="1000000" fileLimit="10" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
                     <br />
                 </h:form>
                 <p:outputLabel value="scarica auto certificazione"/>

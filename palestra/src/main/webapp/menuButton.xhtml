@@ -13,10 +13,11 @@
 </style>
 <h:body>
     <h:form>
+
         <p:growl id="messages" showDetail="true"/>
-        <p:menuButton value="Menu">
+        <p:menuButton value="Home"  icon="pi pi-home">
             <p:menuitem value="Nuovo Iscritto" action="#{menuView.nuovoIscritto}" update="messages" icon="pi pi-save"/>
-            <p:menuitem value="Cerca" action="#{menuView.cerca}" update="messages" icon="pi pi-refresh"/>
+            <p:menuitem value="Cerca" action="#{menuView.cerca}" update="messages"  icon="pi pi-bookmark"/>
             <p:menuitem value="Modifica/Elimina" action="#{menuView.modifica}" update="messages" icon="pi pi-refresh"/>
             <p:separator />
         </p:menuButton>
