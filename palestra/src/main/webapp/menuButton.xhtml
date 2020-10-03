@@ -6,7 +6,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
-
+<style>
+.aligncenter {
+    text-align: center;
+}
+</style>
 <h:body>
     <h:form>
         <p:growl id="messages" showDetail="true"/>
@@ -17,9 +21,12 @@
             <p:separator />
         </p:menuButton>
     </h:form>
-    <h:form>
-        <img src="palestra.jpg" style="width:1500px;height:900px;"/>
-    </h:form>
+
+
+    <p class="aligncenter">
+        <img src="palestra.jpg" alt="centered image" style="width:1000px;height:800px" />
+    </p>
+
 </h:body>
 </html>
 

@@ -16,6 +16,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.*;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 @Named("updateController")
 @RequestScoped
 public class UpdateController {
@@ -54,6 +56,12 @@ public class UpdateController {
 
     private String corso;
 
+    private String comuneNascita;
+
+    private String comuneResidenza;
+
+    private Date dataNascita;
+
     @Autowired
     private AllievoService allievoService;
 
@@ -82,6 +90,10 @@ public class UpdateController {
             nomeCert=allievo.getCert();
             nomeAuto=allievo.getAutoCertificato();
             corso=allievo.getCorso();
+            comuneNascita=allievo.getComune();
+            comuneResidenza=allievo.getComuneResidenza();
+            dataNascita=allievo.getDataNascita();
+
 
             if(allievo.getCertificato()!=null)
             uploadedFile = new ByteArrayUploadedFile(allievo.getCertificato(), allievo.getCert(), "application/pdf");
@@ -111,6 +123,10 @@ public class UpdateController {
         nomeCert="";
         nomeAuto="";
         corso="";
+        comuneNascita="";
+        comuneResidenza="";
+        dataNascita=null;
+
     }
 
     public Allievo getAllievo() {
@@ -158,7 +174,6 @@ public class UpdateController {
     }
 
     public void handleFileUpload(FileUploadEvent event) {
-
         uploadedFile= event.getFile();
         nomeCert=event.getFile().getFileName();
         allievo.setCertificato(uploadedFile.getContents());
@@ -242,6 +257,7 @@ public class UpdateController {
             nomeAuto = "";
             allievo.setAutocertificazione(null);
             allievo.setAutoCertificato("");
+            addMessage("Success", "eliminato");
         }else{
             addMessage("Errore", "Certificato non presente");
 
@@ -401,5 +417,29 @@ public class UpdateController {
             e.printStackTrace();
         }
 
+    }
+
+    public String getComuneNascita() {
+        return comuneNascita;
+    }
+
+    public void setComuneNascita(String comuneNascita) {
+        this.comuneNascita = comuneNascita;
+    }
+
+    public String getComuneResidenza() {
+        return comuneResidenza;
+    }
+
+    public void setComuneResidenza(String comuneResidenza) {
+        this.comuneResidenza = comuneResidenza;
+    }
+
+    public Date getDataNascita() {
+        return dataNascita;
+    }
+
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
     }
 }

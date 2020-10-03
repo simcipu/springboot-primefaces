@@ -37,6 +37,12 @@
                 <p:outputLabel value="Codice Fiscale"/>
                 <p:inputText value="#{updateController.codiceFiscale}"
                 />
+                <p:outputLabel value="Comune Nascita"/>
+                <p:inputText value="#{updateController.comuneNascita}"/>
+                <p:outputLabel value="Comune Residenza"/>
+                <p:inputText value="#{updateController.comuneResidenza}"/>
+                <p:outputLabel value="Data Nascita" />
+                <p:datePicker id="button" value="#{updateController.dataNascita}" showIcon="true" />
                 <p:outputLabel value="Telefono"/>
                 <p:inputText value="#{updateController.telefono}"/>
                 <p:outputLabel value="Mail"/>
@@ -68,7 +74,7 @@
                                multiple="true" update="messages" sizeLimit="1000000" fileLimit="1" allowTypes="/(\.|\/)(pdf|jpe?g|zip)$/"  />
                     <br />
 
-                </h:form>
+
                 <p:outputLabel value="scarica auto certificazione"/>
                 <p:commandButton value="scarica" action="#{updateController.scaricaAutoCertificato()}"
                                  ajax="false"/>
@@ -76,11 +82,11 @@
                 <p:outputLabel value="elimina auto certificazione"/>
                 <p:commandButton value="elimina " action="#{updateController.eliminaAutoCertificato()}"
                                  ajax="false"/>
+
                 <h:outputText value="Abbonamento" />
                 <p:selectOneButton value="#{updateController.abbonamento}">
                     <f:selectItem itemLabel="Mensile" itemValue="mensile" />
                     <f:selectItem itemLabel="Annuale" itemValue="annuale" />
-
                 </p:selectOneButton>
                 <h:outputText value="Pagamento" />
                 <p:selectOneButton value="#{updateController.pagato}">
@@ -99,7 +105,7 @@
                         value="#{updateController.note}"
                         autoResize="false" />
 
-
+                </h:form>
             </h:panelGrid>
             <p:commandButton value="Modifica" action="#{updateController.save()}"
                              update="messages" />

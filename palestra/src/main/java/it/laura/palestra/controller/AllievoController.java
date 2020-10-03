@@ -189,7 +189,6 @@ public class AllievoController {
 
 
     public void handleFileUpload(FileUploadEvent event) {
-
         uploadedFile= event.getFile();
         nomeCert=uploadedFile.getFileName();
 
@@ -220,16 +219,7 @@ public class AllievoController {
 
     }
 
-    public void mostra(){
 
-        if(uploadedFile!=null&&uploadedFile1!=null) {
-            nomeCert = uploadedFile.getFileName();
-            nomeAuto = uploadedFile1.getFileName();
-
-            nomi=nomeCert+";"+nomeAuto;
-        }
-
-    }
 
     public void scaricaCertificato() throws IOException {
 
@@ -238,7 +228,6 @@ public class AllievoController {
             ExternalContext ec = fc.getExternalContext();
 
             byte[] exportContent = uploadedFile.getContents();
-
 
             ec.responseReset();
             ec.setResponseContentType("application/pdf");
@@ -258,9 +247,9 @@ public class AllievoController {
             nomeAuto = "";
             allievo.setAutocertificazione(null);
             allievo.setAutoCertificato("");
+            addMessage("Success", "eliminato");
         }else{
             addMessage("Errore", "Certificato non presente");
-
         }
 
     }
