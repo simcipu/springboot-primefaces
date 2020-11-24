@@ -8,14 +8,12 @@ import it.laura.palestra.repository.AllievoRepository;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Named("updateController")
@@ -62,6 +60,8 @@ public class UpdateController {
 
     private Date dataNascita;
 
+    private boolean close=false;
+
     @Autowired
     private AllievoService allievoService;
 
@@ -100,6 +100,7 @@ public class UpdateController {
 
             if(allievo.getAutocertificazione()!=null)
             uploadedFile1 = new ByteArrayUploadedFile(allievo.getAutocertificazione(), allievo.getAutoCertificato(), "application/pdf");
+        close=true;
         }
     }
 
@@ -126,7 +127,7 @@ public class UpdateController {
         comuneNascita="";
         comuneResidenza="";
         dataNascita=null;
-
+        close=false;
     }
 
     public Allievo getAllievo() {
@@ -135,7 +136,7 @@ public class UpdateController {
 
     public void scaricaCertificato() throws IOException {
 
-        if(uploadedFile!=null) {
+        if(uploadedFile!=null&&!uploadedFile.getFileName().isEmpty()) {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ec = fc.getExternalContext();
 
@@ -155,7 +156,7 @@ public class UpdateController {
 
     public void scaricaAutoCertificato() throws IOException {
 
-        if(uploadedFile1!=null) {
+        if(uploadedFile1!=null&&!uploadedFile1.getFileName().isEmpty()) {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ec = fc.getExternalContext();
 
@@ -441,5 +442,13 @@ public class UpdateController {
 
     public void setDataNascita(Date dataNascita) {
         this.dataNascita = dataNascita;
+    }
+
+    public boolean isClose() {
+        return close;
+    }
+
+    public void setClose(boolean close) {
+        this.close = close;
     }
 }

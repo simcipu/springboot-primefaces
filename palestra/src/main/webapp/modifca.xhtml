@@ -60,11 +60,11 @@
                 </h:form>
                 <p:outputLabel value="scarica certificato"/>
                     <p:commandButton value="scarica" action="#{updateController.scaricaCertificato()}"
-                                     ajax="false"/>
+                                     ajax="false" disabled="#{!(updateController.close)}"/>
 
                 <p:outputLabel value="elimina certificato"/>
                 <p:commandButton value="elimina" action="#{updateController.eliminaCertificato()}"
-                                 ajax="false"/>
+                                 ajax="false" disabled="#{!(updateController.close)}"/>
 
 
                 <p:outputLabel value="Autocertificazione"/>
@@ -76,11 +76,11 @@
                 </h:form>
                 <p:outputLabel value="scarica auto certificazione"/>
                 <p:commandButton value="scarica" action="#{updateController.scaricaAutoCertificato()}"
-                                 ajax="false"/>
+                                 ajax="false" disabled="#{!(updateController.close)}"/>
 
                 <p:outputLabel value="elimina auto certificazione"/>
                 <p:commandButton value="elimina " action="#{updateController.eliminaAutoCertificato()}"
-                                 ajax="false"/>
+                                 ajax="false" disabled="#{!(updateController.close)}"/>
 
                 <h:outputText value="Abbonamento" />
                 <p:selectOneButton value="#{updateController.abbonamento}">
@@ -107,10 +107,10 @@
 
             </h:panelGrid>
             <p:commandButton value="Modifica" action="#{updateController.save()}"
-                             update="messages" />
+                             update="messages" disabled="#{!(updateController.close)}"/>
 
             <p:commandButton value="Elimina" action="#{updateController.eliminaAllievo()}"
-                             update="messages" />
+                             update="messages" disabled="#{!(updateController.close)}"/>
 
         </p:panel>
 
