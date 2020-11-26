@@ -4,6 +4,7 @@ import it.laura.palestra.business.AllievoService;
 import it.laura.palestra.model.Allievo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -34,6 +35,13 @@ public class CercaController {
     private Boolean act;
 
     private List<Allievo> lista;
+
+
+    @PostConstruct
+    public void init(){
+        refresh();
+
+    }
 
     public void trovaTutto() {
 

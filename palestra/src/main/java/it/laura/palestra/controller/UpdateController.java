@@ -8,6 +8,8 @@ import it.laura.palestra.repository.AllievoRepository;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -68,6 +70,10 @@ public class UpdateController {
     @Autowired
     private AllievoRepository allievoRepository;
 
+    @PostConstruct
+    public void init(){
+        refresh();
+    }
 
 
     public void carica() throws UnsupportedEncodingException {

@@ -9,4 +9,5 @@
         <action-listener>org.primefaces.application.DialogActionListener</action-listener>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+
 </faces-config>

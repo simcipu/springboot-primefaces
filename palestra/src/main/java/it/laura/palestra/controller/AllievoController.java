@@ -5,6 +5,8 @@ import it.laura.palestra.model.Allievo;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -51,6 +53,14 @@ public class AllievoController {
     public void setUploadedFile1(UploadedFile uploadedFile1) {
         this.uploadedFile1 = uploadedFile1;
     }
+
+
+    @PostConstruct
+    public void init(){
+        refresh();
+
+    }
+
 
     public void refresh() {
        allievo=new Allievo();

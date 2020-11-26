@@ -12,6 +12,8 @@ public class WelcomePageRedirect implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
                 .setViewName("forward:/index.html");
+
+
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
