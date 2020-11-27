@@ -254,4 +254,17 @@ public class Allievo implements Serializable {
     public void setDataNascita(Date dataNascita) {
         this.dataNascita = dataNascita;
     }
+
+    @Override
+    public String toString() {
+        return "<body><p>Allievo{" +
+                "codiceFiscale='" + codiceFiscale + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", pagato='" + pagato + '\'' +
+                ", abbonamento='" + abbonamento + '\'' +
+                ", attivo='" + attivo + '\'' +
+                ", corso='" + corso + '\'' +
+                '}'+"</p></body>";
+    }
 }

@@ -33,6 +33,12 @@ public class AllievoService {
         return allievoRepository.findByProp(codice,nome,cognome,pagato);
     }
 
+
+    public List<Allievo> getAllieviPag(){
+
+        return allievoRepository.findByPagato();
+    }
+
     public Allievo cercaPerCodice(String codice){
 
         if(allievoRepository.existsById(codice)) {

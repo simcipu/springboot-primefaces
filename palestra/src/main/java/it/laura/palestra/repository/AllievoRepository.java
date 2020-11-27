@@ -13,4 +13,11 @@ public interface AllievoRepository  extends Repository<Allievo, String>{
     List<Allievo> findByProp(String codiceFiscale,String nome,String cognome,String pagato);
 
 
+    @Query("SELECT u FROM Allievo u WHERE u.pagato='Da pagare'")
+    List<Allievo> findByPagato();
+
+    @Query("SELECT u FROM Allievo u WHERE u.codiceFiscale =?1")
+    Allievo findByCodice(String cod);
+
+
 }
